@@ -1,6 +1,7 @@
 public class MyArrayList {
 
-    private String[] data = {};
+    private String[] data = new String[10];
+    private int size = 0; // Размер массива
 
     public static void main(String[] args) {
         MyArrayList list = new MyArrayList();
@@ -25,16 +26,19 @@ public class MyArrayList {
     }
 
     private int size() {
-        return data.length;
+        return size;
     }
 
     private void add(String s) {
         // Добавляем в массив строк
-        String[] newData = new String[data.length + 1];
-        for (int i = 0; i < data.length; i++) {
-            newData[i] = data[i];
+        size++;
+        if (data.length < size) {
+            String[] newData = new String[2 * data.length];
+            for (int i = 0; i < data.length; i++) {
+                newData[i] = data[i];
+            }
+            data = newData;
         }
-        newData[data.length] = s;
-        data = newData;
+        data[size - 1] = s;
     }
 }
