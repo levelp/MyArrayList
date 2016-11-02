@@ -1,8 +1,10 @@
 public class MyArrayList {
 
+    // Массив для хранения элементов
     private String[] data = new String[10];
     private int size = 0; // Размер массива
 
+    // Тестирование работы нашего класса
     public static void main(String[] args) {
         MyArrayList list = new MyArrayList();
         // TDD: Test Driven Development
@@ -21,24 +23,31 @@ public class MyArrayList {
         }
     }
 
-    private String get(int i) {
+    // Метод для получения элемента по индексу
+    String get(int i) {
         return data[i];
     }
 
-    private int size() {
+    // Получение размера массива извне
+    int size() {
         return size;
     }
 
-    private void add(String s) {
-        // Добавляем в массив строк
-        size++;
+    // Добавление нового элемента (новой строки)
+    void add(String s) {
+        size++; // Увеличиваем количество элементов
+        // Если массив меньше, чем количество элементов
         if (data.length < size) {
+            // Создаём новый массив большего размера
             String[] newData = new String[2 * data.length];
+            // Копируем элементы из старого массива в новый
             for (int i = 0; i < data.length; i++) {
                 newData[i] = data[i];
             }
+            // Заменяем старый массив на новый
             data = newData;
         }
+        // Записываем новый элемент в нужную позицию
         data[size - 1] = s;
     }
 }
